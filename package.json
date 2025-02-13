@@ -1,0 +1,24 @@
+{
+  "name": "eden",
+  "version": "1.0.0",
+  "description": "Projeto eden para Arborização em Natal/RN",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pedrovinicius123/eden.git"
+  },
+  "author": "Pedro Vinícius, Andriela Silva, Acsa Mirella, Elouise da Costa Galdino",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Pedrovinicius123/eden/issues"
+  },
+  "homepage": "https://github.com/Pedrovinicius123/eden#readme",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "mongodb": "^6.13.0",
+    "nodemon": "^3.1.9"
+  }
+}
