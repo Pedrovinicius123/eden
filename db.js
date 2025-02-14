@@ -1,27 +1,19 @@
-const { MongoClient, ServerApiVersion } = require('mongodb');
+require('dotenv').config()
+const password = process.env.PASSWORD
 
-require('dotenv').config();
-const uri = "mongodb+srv://pvasx123:" + process.env.PASSWORD + "@edencluster.ljprr.mongodb.net/?retryWrites=true&w=majority&appName=EdenCluster";
+const connect = async () => {
+    if (global.connection && global.connection.state != "disconected"){
+        return global.connection
 
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  }
-});
+    }
+    const mysql = require('mysql2/promise');
+    const conn = mysql.createConnection(`mysql://root:${password}@localhost:3306/eden`)
+    
+    console.log("Connection estabilished")
+    global.conection = conn
+    return conn
 
-async function run() {
-  try {
-    // Connect the client to the server	(optional starting in v4.7)
-    await client.connect();
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
 }
-run().catch(console.dir);
+
+connect()
+module.exports = {}
